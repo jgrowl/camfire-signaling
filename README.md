@@ -12,3 +12,8 @@ websocket connection with one of them. Each signalling server can communicate wi
 The signaling server will ideally communicate to a separate clustered stream server that will actually manage WebRTC
 objects.
 
+# Instructions
+
+To create the stand-alone jar:
+
+`sbt assembly`
