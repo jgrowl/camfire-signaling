@@ -1,3 +1,6 @@
 [submodule "session-management"]
 	path = session-management
 	url = git@github.com:jgrowl/camfire-anti-session-management.git
+[submodule "webrtc-jackson-serialization"]
+	path = webrtc-jackson-serialization
+	url = git@github.com:jgrowl/webrtc-jackson-serialization.git
