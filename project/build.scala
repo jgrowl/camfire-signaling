@@ -8,7 +8,6 @@ import ScalateKeys._
 import AssemblyKeys._
 
 object CamfireSignalingBuild extends Build {
-
   val Organization = "tv.camfire"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.10.2"
@@ -31,7 +30,6 @@ object CamfireSignalingBuild extends Build {
       case ReadMe(_, ext) if ext != ".class" => true
       case _ => false
     }
-
 
   val defaultMergeStrategy: String => MergeStrategy = {
     case "reference.conf" | "rootdoc.txt" =>
@@ -67,7 +65,7 @@ object CamfireSignalingBuild extends Build {
       version := Version,
       scalaVersion := ScalaVersion
     )
-  ) aggregate (sessionManagement, webrtcJacksonSerialization, mediaServer)
+  ) aggregate (sessionManagement, webrtcJacksonSerialization, signalingServer)
 
   val SessionManagementVersion = "0.1.0-SNAPSHOT"
   lazy val sessionManagement = Project(
@@ -108,14 +106,14 @@ object CamfireSignalingBuild extends Build {
     )
   )
 
-  val MediaServerVersion = "0.1.0-SNAPSHOT"
-  lazy val mediaServer = Project(
-    id = "media-server",
-    base = file("media-server"),
+  val SignalingServerVersion = "0.1.0-SNAPSHOT"
+  lazy val signalingServer = Project(
+    id = "signaling-server",
+    base = file("signaling-server"),
     settings = Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ assemblySettings ++ Seq(
       organization := Organization,
-      name := "media-server",
-      version := MediaServerVersion,
+      name := "signaling-server",
+      version := SignalingServerVersion,
       scalaVersion := ScalaVersion,
       resolvers += Classpaths.typesafeReleases,
       resolvers += Resolver.sonatypeRepo("releases"),
