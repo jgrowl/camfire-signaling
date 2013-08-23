@@ -1,0 +1,3 @@
+[submodule "session-management"]
+	path = session-management
+	url = git@github.com:jgrowl/camfire-anti-session-management.git
