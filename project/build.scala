@@ -61,7 +61,7 @@ object CamfireSignalingBuild extends Build {
     base = file("."),
     settings = Defaults.defaultSettings ++ assemblySettings ++ Seq(
       organization := Organization,
-      name := "camfire-tv",
+      name := "camfire-signaling",
       version := Version,
       scalaVersion := ScalaVersion
     )
