@@ -57,7 +57,7 @@ object CamfireSignalingBuild extends Build {
   }
 
   lazy val root = Project(
-    id = "camfire-tv",
+    id = "camfire-signaling",
     base = file("."),
     settings = Defaults.defaultSettings ++ assemblySettings ++ Seq(
       organization := Organization,
@@ -65,7 +65,7 @@ object CamfireSignalingBuild extends Build {
       version := Version,
       scalaVersion := ScalaVersion
     )
-  ) aggregate (sessionManagement, webrtcJacksonSerialization, signalingServer)
+  ) aggregate(sessionManagement, webrtcJacksonSerialization, signalingServer)
 
   val SessionManagementVersion = "0.1.0-SNAPSHOT"
   lazy val sessionManagement = Project(
@@ -80,10 +80,10 @@ object CamfireSignalingBuild extends Build {
       resolvers += Resolver.sonatypeRepo("releases"),
       libraryDependencies ++= Seq(
         "org.json4s" %% "json4s-jackson" % JSON4SJacksonVersion % "provided"
-        ,"org.eclipse.jetty" % "jetty-webapp" % JettyVersion % "provided"
-        ,"commons-pool" %  "commons-pool" % "1.6"
-        ,"org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "provided" artifacts (Artifact("javax.servlet", "jar", "jar"))
-        ,"ch.qos.logback" % "logback-classic" % "1.0.6" % "provided"
+        , "org.eclipse.jetty" % "jetty-webapp" % JettyVersion % "provided"
+        , "commons-pool" % "commons-pool" % "1.6"
+        , "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "provided" artifacts (Artifact("javax.servlet", "jar", "jar"))
+        , "ch.qos.logback" % "logback-classic" % "1.0.6" % "provided"
       )
     )
   )
