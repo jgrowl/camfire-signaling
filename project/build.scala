@@ -122,6 +122,8 @@ object CamfireSignalingBuild extends Build {
         "com.softwaremill.macwire" % "core_2.10" % "0.3",
         "org.scalatra" %% "scalatra-atmosphere" % "2.2.1",
         "org.scalatra" %% "scalatra-json" % "2.2.1",
+//        "org.atmosphere" % "atmosphere-redis" % "1.1.0.RC5",
+        "org.atmosphere" % "atmosphere-redis" % "1.0.12",
         "org.json4s" %% "json4s-jackson" % JSON4SJacksonVersion,
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,

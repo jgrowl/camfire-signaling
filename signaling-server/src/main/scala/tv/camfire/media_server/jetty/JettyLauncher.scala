@@ -60,6 +60,9 @@ class JettyLauncher(modules: ServletModule, properties: Properties) {
 
   context.setInitParameter("org.eclipse.jetty.servlet.SessionCookie", properties.sessionCookie)
 
+  // Testing redis pubsub
+//  context.setInitParameter("org.atmosphere.plugin.redis.RedisBroadcaster.server", "http://localhost")
+
   context.addEventListener(modules.sessionListener)
   context.addServlet(new ServletHolder(modules.signalController), "/*")
 
