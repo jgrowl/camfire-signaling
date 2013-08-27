@@ -128,7 +128,6 @@ object CamfireSignalingBuild extends Build {
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
-        "rhino" % "js" % "1.7R2" % "test",
         "net.databinder.dispatch" %% "dispatch-core" % "0.11.0" % "test",
         "com.typesafe.akka" %% "akka-testkit" % "2.1.2" % "test" intransitive(),
         "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
