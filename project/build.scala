@@ -11,7 +11,8 @@ object CamfireSignalingBuild extends Build {
   val Organization = "tv.camfire"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.10.2"
-  val ScalatraVersion = "2.2.1"
+//  val ScalatraVersion = "2.2.1"
+  val ScalatraVersion = "2.3.0-SNAPSHOT"
   val JettyVersion = "8.1.8.v20121106"
   val JSON4SJacksonVersion = "3.2.4"
 
@@ -117,19 +118,30 @@ object CamfireSignalingBuild extends Build {
       scalaVersion := ScalaVersion,
       resolvers += Classpaths.typesafeReleases,
       resolvers += Resolver.sonatypeRepo("releases"),
+      resolvers += Resolver.sonatypeRepo("snapshots"),
+//      resolvers += "http://repo.fusesource.com/nexus/content/repositories/snapshots",
+//      resolvers += Resolver.url("fusesource", url("http://repo.fusesource.com/nexus/content/repositories/snapshots")),
+      resolvers += "FuseSource Snapshot Repository" at "http://repo.fusesource.com/nexus/content/repositories/snapshots",
       libraryDependencies ++= Seq(
         "com.typesafe" % "config" % "1.0.2",
-        "com.softwaremill.macwire" % "core_2.10" % "0.3",
-        "org.scalatra" %% "scalatra-atmosphere" % "2.2.1",
-        "org.scalatra" %% "scalatra-json" % "2.2.1",
-//        "org.atmosphere" % "atmosphere-redis" % "1.1.0.RC5",
+        "com.softwaremill.macwire" %% "core" % "0.3",
+//        "org.scalatra" %% "scalatra-atmosphere" % "2.2.1",
+                "com.typesafe.akka" %% "akka-actor" % "2.2.0",
+        "org.scalatra.rl" %% "rl" % "0.4.8",
+        "com.typesafe.akka" %% "akka-slf4j" % "2.2.0",
+//        "com.typesafe.akka" % "akka-actor_2.10" % "2.2.0",
+        "org.atmosphere" % "atmosphere-runtime"  % "1.0.12",
         "org.atmosphere" % "atmosphere-redis" % "1.0.12",
+//        "org.scalatra" %% "scalatra-json" % ScalatraVersion,
+//        "org.atmosphere" % "atmosphere-redis" % "1.1.0.RC5",
         "org.json4s" %% "json4s-jackson" % JSON4SJacksonVersion,
-        "org.scalatra" %% "scalatra" % ScalatraVersion,
-        "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
+//        "org.scalatra" %% "scalatra" % ScalatraVersion,
+//        "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
+        "org.fusesource.scalate" %% "scalate-core" % "1.6.1",
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
         "net.databinder.dispatch" %% "dispatch-core" % "0.11.0" % "test",
-        "com.typesafe.akka" %% "akka-testkit" % "2.1.2" % "test" intransitive(),
+        "com.typesafe.akka" %% "akka-testkit" % "2.2.0" % "test" intransitive(),
+//        "com.typesafe.akka" %% "akka-testkit" % "2.1.2" % "test" intransitive(),
         "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
         "org.eclipse.jetty" % "jetty-websocket" % JettyVersion % "container;compile",
         "org.eclipse.jetty" % "jetty-webapp" % JettyVersion % "container;compile",
@@ -152,4 +164,3 @@ object CamfireSignalingBuild extends Build {
     )
   ) dependsOn(sessionManagement, webrtcJacksonSerialization)
 }
-

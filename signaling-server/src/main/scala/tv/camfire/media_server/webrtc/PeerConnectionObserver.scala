@@ -48,7 +48,7 @@ class PeerConnectionObserver(mediaService: ActorRef,
     logger.debug("onIceCandidate called...")
     logger.debug("Broadcasting server candidate: ")
     val candidate = _serializationHelper.createSignalString("candidate", iceCandidate)
-    AtmosphereClient.broadcastAll(candidate, Me)
+//    AtmosphereClient.broadcastAll(candidate, Me)
   }
 
   def onError() {

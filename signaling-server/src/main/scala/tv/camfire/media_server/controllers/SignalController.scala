@@ -43,7 +43,9 @@ with SessionSupport
 with AtmosphereSupport
 with CorsSupport
 with CamfireSerializationSupport
-with FutureSupport {
+//with FutureSupport {
+  {
+  scalatraBroadcasterClass = classOf[RedisScalatraBroadcaster]
 
   import _root_.akka.pattern.ask
 
@@ -99,7 +101,7 @@ with FutureSupport {
           `type` match {
             case "offer" =>
               val remoteSessionDescription = mapper.readValue(data, classOf[SessionDescription])
-              new AsyncResult {
+//              new AsyncResult {
                 val is = mediaService ? ClientOffer(sessionId, remoteSessionDescription)
                 is.onSuccess({
                   case answer: Signal =>
@@ -109,7 +111,7 @@ with FutureSupport {
                   case _ =>
                     println("failed ")
                 })
-              }
+//              }
             case "answer" =>
               val remoteSessionDescription = mapper.readValue(data, classOf[SessionDescription])
               mediaService ! ClientAnswer(sessionId, remoteSessionDescription)
@@ -119,22 +121,22 @@ with FutureSupport {
             case "subscribe" =>
               mediaService ! SubscribeToMediaStream(sessionId, data)
             case "session-id-hash" =>
-              new AsyncResult {
+//              new AsyncResult {
                 val is = mediaService ? GetSessionIdHash(sessionId)
                 is.onSuccess({
                   case sessionIdHash: String =>
                     send(sessionIdHash)
                 })
-              }
+//              }
             case "available-stream" =>
-              new AsyncResult {
+//              new AsyncResult {
                 val is = mediaService ? GetAvailableStreams()
                 is.onSuccess({
                   // TODO: Fix this, comes back as array?
                   case sessionIdHash: String =>
                     send(sessionIdHash)
                 })
-              }
+//              }
             case _ =>
               _logger.warn("%s : [%s] %s'".format(UNKNOWN_SIGNAL, `type`, CLIENT_ERROR))
           }

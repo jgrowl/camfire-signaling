@@ -48,5 +48,6 @@ trait LogicModule extends Macwire {
   lazy implicit val actorSystem = ActorSystem()
   lazy val sessionCompanionFactoryFactory: SessionCompanionFactoryFactory = wire[SessionCompanionFactoryFactory]
   lazy val mediaServiceProps: Props = Props(new MediaService(sessionCompanionFactoryFactory))
+//  lazy val mediaServiceProps: Props = Props(classOf[MediaService], sessionCompanionFactoryFactory) //(sessionCompanionFactoryFactory))
   lazy val mediaService: ActorRef = actorSystem.actorOf(mediaServiceProps, properties.mediaServiceName)
 }
